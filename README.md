@@ -33,4 +33,11 @@ can enjoy.
 
 ## Why is this project of interest to you?
 
-I grew up playing many video games. Many role-playing games I enjoyed required players to solve mini-game-like puzzles to progress the storyline. I think it will be interesting to re-create a puzzle-like memory game as well.
+I grew up playing many video games. Many role-playing games 
+I enjoyed required players to solve mini-game-like puzzles to progress the storyline. 
+\ think it will be interesting to re-create a puzzle-like memory game as well.
+
+## User Stories
+
+- As a user, I want to be able to start the game
+
