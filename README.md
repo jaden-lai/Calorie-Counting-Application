@@ -40,4 +40,7 @@ I enjoyed required players to solve mini-game-like puzzles to progress the story
 ## User Stories
 
 - As a user, I want to be able to start the game
+- As a user, I want to be able to click tiles
+- As a user, I want to be able to save
+- As a user, I want to be able to pause
 
