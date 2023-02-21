@@ -24,17 +24,16 @@ the current high score. It will also include a play again, or return to start sc
 
 ## Who will use it?
 
-This project is a video game so its application will be solely for user
-entertainment. It should be an easy pick-up game that users of all ages
-can enjoy.
+This project is an application made to entertain. Its purpose will be solely for user
+entertainment. It should be an easy pick-up game that anyone can enjoy.
 
 
 
 ## Why is this project of interest to you?
 
-I grew up playing many video games. Many role-playing games 
-I enjoyed required players to solve mini-game-like puzzles to progress the storyline. 
-\ think it will be interesting to re-create a puzzle-like memory game as well.
+Video games have always been a part of my life; something to kill time, and to bond with friends and family.
+I've always been particularly fond of the puzzle aspects of games, so I thought it would be
+interesting to attempt creating one of my own.
 
 ## User Stories
 
