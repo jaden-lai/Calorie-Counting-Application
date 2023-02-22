@@ -4,17 +4,10 @@ import model.Profile;
 
 import java.util.Scanner;
 
-// Bank teller application
+// Calorie tracking application
 public class CalorieApp {
     private Profile profile;
     private Scanner input;
-    private double targetCalories;
-    private double height;
-    private double weight;
-    private double bmi;
-    private int age;
-    private String sex;
-
 
     // EFFECTS: runs the calorie application
     public CalorieApp() {
@@ -61,7 +54,7 @@ public class CalorieApp {
     // MODIFIES: this
     // EFFECTS: initializes accounts
     private void init() {
-        profile = new Profile("User", 0, 0, 0, 0, 0, "blank");
+        profile = new Profile("User", 0, 0, 0, 0, 0, "");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -91,36 +84,36 @@ public class CalorieApp {
         if (amount <= 0) {
             System.out.println("Invalid height entered...\n");
         } else {
-            this.height = amount;
+            profile.newHeight(amount);
             System.out.print("Enter weight(kg):");
             double amount2 = input.nextDouble();
             if (amount2 <= 0) {
                 System.out.println("Invalid weight entered...\n");
             } else {
-                this.weight = amount2;
+                profile.newHeight(amount2);
                 System.out.print("Enter age:");
                 int amount3 = input.nextInt();
                 if (amount3 <= 0) {
                     System.out.println("Invalid age entered...\n");
                 } else {
-                    this.age = amount3;
+                    profile.newAge(amount3);
                     System.out.print("Enter sex (male/female):");
                     String amount4 = input.next();
                     if (amount4.equals("male")) {
-                        this.sex = amount4;
-                        profile.newCalories(66.5 + 13.75 * weight + 5.003 * height - 6.75 * age);
+                        profile.newSex("male");
+                        profile.newCalories(66.5 + 13.75 * profile.getWeight()
+                                + 5.003 * profile.getHeight() - 6.75 * profile.getAge());
                     } else {
                         if (amount4.equals("female")) {
-                            this.sex = amount4;
-                            profile.newCalories(655.1 + 9.563 * weight + 1.850 * height - 4.676 * age);
+                            profile.newSex("female");
+                            profile.newCalories(655.1 + 9.563 * profile.getWeight()
+                                    + 1.850 * profile.getHeight() - 4.676 * profile.getAge());
                         } else {
                             System.out.println("Invalid sex entered...\n");
                         }
-                        this.sex = amount4;
+                        profile.newSex("");
                     }
-                    profile.newBMI(weight / ((height / 100) * (height / 100)));
-                    bmi = profile.getBMI();
-                    targetCalories = profile.getCalories();
+                    profile.newBMI(profile.getWeight() / ((profile.getHeight() / 100) * (profile.getHeight() / 100)));
                 }
             }
         }

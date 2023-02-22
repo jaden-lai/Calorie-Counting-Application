@@ -3,7 +3,6 @@ package model;
 // Represents an profile with username and BMI
 public class Profile {
     private static int nextAccountId = 1;  // tracks id of next account created
-    private int id;                        // account id
     private String name;                   // the account owner name
     private double calories;                // the current balance of the account
     private double height = 0;
@@ -21,7 +20,6 @@ public class Profile {
      */
     public Profile(String username, double initialCalories, double height, double weight, int age, double bmi,
                    String sex) {
-        id = nextAccountId++;
         name = username;
         if (initialCalories >= 0) {
             calories = initialCalories;
@@ -66,7 +64,6 @@ public class Profile {
      */
     public double addCalories(double amount) {
         calories = calories + amount;
-        return calories;
     }
 
     /*
@@ -77,7 +74,6 @@ public class Profile {
      */
     public double removeCalories(double amount) {
         calories = calories - amount;
-        return calories;
     }
 
     /*
@@ -88,7 +84,6 @@ public class Profile {
      */
     public double newCalories(double amount) {
         calories = amount;
-        return calories;
     }
 
     /*
@@ -99,7 +94,6 @@ public class Profile {
      */
     public double newBMI(double amount) {
         bmi = amount;
-        return bmi;
     }
 
     /*
@@ -110,7 +104,6 @@ public class Profile {
      */
     public double newAge(int amount) {
         age = amount;
-        return age;
     }
 
     /*
@@ -121,7 +114,16 @@ public class Profile {
      */
     public String newSex(String gender) {
         sex = gender;
-        return sex;
+    }
+
+    /*
+     * REQUIRES: amount >= 0 and amount <= getBalance()
+     * MODIFIES: this
+     * EFFECTS: amount is withdrawn from account and updated
+     * 		    balance is returned
+     */
+    public double newHeight(double amount) {
+        height = amount;
     }
 
 }
