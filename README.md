@@ -1,44 +1,36 @@
-# Tile Memory Matching Game
+# Daily Calorie Counting Application
 
 ## What will the application do?
 
-I imagine the game to consist of three parts
-- **Start** *screen*
-- **Game** *screen*
-- **Loss** *screen*
+This application will consist of multiple parts:
+- **Main UI** *screen*: Total recommended calorie goal displayed and ability to modify calories, food consumption, 
+and fitness.
 
-The start screen will provide instructions on how to play the game,
-a start button, and a high score counter.
-
-The game screen will consist of a grid of square tiles, a score counter, and a pause button.
-It begins with a grid of blank 10 x 10 squares at one flashing tile. Once that tile flashes, the player must
-click the same tile after it goes blank again. If they are correct, two tiles will flash next, n + 1 tiles where n is 
-the previous number of flashing tiles. If incorrect, high score will be checked and updated if beaten. 
-The player wins if they reach n = 90 flashing tiles.
-
-The loss screen will be displayed if an incorrect tile is selected, projecting the game-score as well as
-the current high score. It will also include a play again, or return to start screen button.
-
-
+This calorie counting application will allow users to calorie count through their daily activities from food consumption,
+sleep, and fitness. A user's 'target' calorie goal will be calculated using the Harris-Benedict equation based off
+user-inputed information such as body mass index (BMI) and height and weight; they will be able to modify this based on
+their goals.
 
 
 ## Who will use it?
 
-This project is an application made to entertain. Its purpose will be solely for user
-entertainment. It should be an easy pick-up game that anyone can enjoy.
+This application aims to help those trying to gain, lose, or maintain their weight by tracking calories to assist the user
+in establishing a calorie surplus, calorie deficit, or to meet whatever goals the user may have in regards to weight.
 
 
 
 ## Why is this project of interest to you?
 
-Video games have always been a part of my life; something to kill time, and to bond with friends and family.
-I've always been particularly fond of the puzzle aspects of games, so I thought it would be
-interesting to attempt creating one of my own.
+I began going to the gym on a daily just last year, and became very interested in fitness and bodybuilding. It
+all started when a friend invited me to train before it became something I was passionate about. Bodybuilding is 
+something that gives me confidence, and something that I was able to bond with friends over. The importance of
+calorie counting in bodybuilding is substantial, and there are many calorie counting apps out there today, but
+I think it would be interesting to tackle this and create one of my own.
 
 ## User Stories
 
-- As a user, I want to be able to start the game
-- As a user, I want to be able to click tiles
-- As a user, I want to be able to lose
-- As a user, I want to be able to see a score counter
+- As a user, I want to be able to add/remove an exercise to my calorie counter
+- As a user, I want to be able to add/remove foods from my calorie counter
+- As a user, I want to be able to see my target calorie count
+- As a user, I want to be able to choose my calorie goal
 
