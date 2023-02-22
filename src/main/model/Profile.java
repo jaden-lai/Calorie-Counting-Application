@@ -64,6 +64,7 @@ public class Profile {
      */
     public double addCalories(double amount) {
         calories = calories + amount;
+        return calories;
     }
 
     /*
@@ -74,6 +75,7 @@ public class Profile {
      */
     public double removeCalories(double amount) {
         calories = calories - amount;
+        return calories;
     }
 
     /*
@@ -84,6 +86,7 @@ public class Profile {
      */
     public double newCalories(double amount) {
         calories = amount;
+        return calories;
     }
 
     /*
@@ -94,6 +97,7 @@ public class Profile {
      */
     public double newBMI(double amount) {
         bmi = amount;
+        return bmi;
     }
 
     /*
@@ -104,6 +108,7 @@ public class Profile {
      */
     public double newAge(int amount) {
         age = amount;
+        return age;
     }
 
     /*
@@ -114,6 +119,7 @@ public class Profile {
      */
     public String newSex(String gender) {
         sex = gender;
+        return sex;
     }
 
     /*
@@ -124,6 +130,7 @@ public class Profile {
      */
     public double newHeight(double amount) {
         height = amount;
+        return height;
     }
 
 }
