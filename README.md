@@ -39,6 +39,6 @@ interesting to attempt creating one of my own.
 
 - As a user, I want to be able to start the game
 - As a user, I want to be able to click tiles
-- As a user, I want to be able to save
-- As a user, I want to be able to pause
+- As a user, I want to be able to lose
+- As a user, I want to be able to see a score counter
 
