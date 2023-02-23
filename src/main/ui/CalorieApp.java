@@ -50,6 +50,8 @@ public class CalorieApp {
     private void processCommand(String command) {
         if (command.equals("e")) {
             addExercise();
+        } else if (command.equals("r")) {
+            removeExercise();
         } else if (command.equals("c")) {
             viewExerciseList();
         } else if (command.equals("f")) {
@@ -87,6 +89,7 @@ public class CalorieApp {
         System.out.print("TARGET CALORIES:" + profile.getCalories() + "\n");
         System.out.println("\nDay's calorie count:");
         System.out.println("\te -> add exercise");
+        System.out.println("\tr -> remove exercise");
         System.out.println("\tc -> view current exercise list");
         System.out.println("\tf -> add food");
         System.out.println("\tv -> view current food list");
@@ -110,6 +113,21 @@ public class CalorieApp {
 
         profile.newCalorieCount(profile.getCalorieCount() - amount2);
         workoutList.add(exercise1);
+        System.out.println("\n");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void removeExercise() {
+        System.out.print("Enter exercise name:");
+        String amount = input.next();
+
+        for (Exercise exercise : workoutList) {
+            if (amount.equals(exercise.getExerciseName())) {
+                workoutList.remove(exercise);
+                System.out.println(exercise.getExerciseName() + "removed");
+            }
+        }
         System.out.println("\n");
     }
 
