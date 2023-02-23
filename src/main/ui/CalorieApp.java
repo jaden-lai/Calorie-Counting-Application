@@ -15,7 +15,6 @@ public class CalorieApp {
     private Scanner input;
     private ArrayList<Food> foodList = new ArrayList<>();
     private ArrayList<Exercise> workoutList = new ArrayList<>();
-    private Food food;
 
     // EFFECTS: runs the calorie application
     public CalorieApp() {
@@ -47,15 +46,18 @@ public class CalorieApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void processCommand(String command) {
         if (command.equals("e")) {
             addExercise();
-        } else if (command.equals("r")) {
+        } else if (command.equals("t")) {
             removeExercise();
         } else if (command.equals("c")) {
             viewExerciseList();
         } else if (command.equals("f")) {
             addFood();
+        } else if (command.equals("x")) {
+            removeFood();
         } else if (command.equals("v")) {
             viewFoodList();
         } else if (command.equals("r")) {
@@ -89,9 +91,10 @@ public class CalorieApp {
         System.out.print("TARGET CALORIES:" + profile.getCalories() + "\n");
         System.out.println("\nDay's calorie count:");
         System.out.println("\te -> add exercise");
-        System.out.println("\tr -> remove exercise");
+        System.out.println("\tt -> remove exercise");
         System.out.println("\tc -> view current exercise list");
         System.out.println("\tf -> add food");
+        System.out.println("\tx -> remove food");
         System.out.println("\tv -> view current food list");
         System.out.println("\tr -> reset calorie count");
         System.out.println("Modify calorie target:");
@@ -119,13 +122,16 @@ public class CalorieApp {
     // MODIFIES: this
     // EFFECTS: conducts a deposit transaction
     private void removeExercise() {
-        System.out.print("Enter exercise name:");
+        System.out.print("Enter exercise name to remove:");
         String amount = input.next();
 
-        for (Exercise exercise : workoutList) {
-            if (amount.equals(exercise.getExerciseName())) {
-                workoutList.remove(exercise);
-                System.out.println(exercise.getExerciseName() + "removed");
+        for  (int i = 0; i < workoutList.size(); i++) {
+            Exercise e = workoutList.get(i);
+            if (amount.equals(e.getExerciseName())) {
+                profile.newCalorieCount(profile.getCalorieCount() + e.getCaloriesBurned());
+                System.out.println(e.getExerciseName() + " removed");
+                workoutList.remove(e);
+                i--;
             }
         }
         System.out.println("\n");
@@ -157,6 +163,24 @@ public class CalorieApp {
 
         profile.newCalorieCount(amount2 + profile.getCalorieCount());
         foodList.add(food1);
+        System.out.println("\n");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void removeFood() {
+        System.out.print("Enter food name to remove:");
+        String amount = input.next();
+
+        for  (int i = 0; i < foodList.size(); i++) {
+            Food f = foodList.get(i);
+            if (amount.equals(f.getFoodName())) {
+                profile.newCalorieCount(profile.getCalorieCount() - f.getFoodCalories());
+                System.out.println(f.getFoodName() + " removed");
+                foodList.remove(f);
+                i--;
+            }
+        }
         System.out.println("\n");
     }
 
