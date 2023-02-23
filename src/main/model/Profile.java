@@ -15,9 +15,16 @@ public class Profile {
      * REQUIRES: username has a non-zero length
      * EFFECTS: name on account is set to accountName;
      */
-    public Profile(String username, double calories, double calorieCount, double height, double weight, int age, double bmi,
+    public Profile(String name, double calories, double calorieCount, double height, double weight, int age, double bmi,
                    String sex) {
-        name = username;
+        this.name = name;
+        this.calories = calories;
+        this.calorieCount = calorieCount;
+        this.height = height;
+        this.weight = weight;
+        this.bmi = bmi;
+        this.age = age;
+        this.sex = sex;
     }
 
     public String getUsername() {
@@ -42,10 +49,6 @@ public class Profile {
 
     public int getAge() {
         return age;
-    }
-
-    public String getSex() {
-        return sex;
     }
 
     public double getCalorieCount() {
@@ -149,6 +152,17 @@ public class Profile {
     public double newWeight(double amount) {
         weight = amount;
         return weight;
+    }
+
+    /*
+     * REQUIRES: amount >= 0 and amount <= getBalance()
+     * MODIFIES: this
+     * EFFECTS: amount is withdrawn from account and updated
+     * 		    balance is returned
+     */
+    public String newName(String string) {
+        name = string;
+        return name;
     }
 
 }

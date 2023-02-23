@@ -1,8 +1,10 @@
 package ui;
 
+import model.Exercise;
 import model.Food;
 import model.Profile;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +13,8 @@ import java.util.Scanner;
 public class CalorieApp {
     private Profile profile;
     private Scanner input;
-    private ArrayList<Food> foodlist;
+    private ArrayList<Food> foodList = new ArrayList<>();
+    private ArrayList<Exercise> workoutList = new ArrayList<>();
     private Food food;
 
     // EFFECTS: runs the calorie application
@@ -46,9 +49,13 @@ public class CalorieApp {
     // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("e")) {
-            calorieSurplus();
+            addExercise();
+        } else if (command.equals("c")) {
+            viewExerciseList();
         } else if (command.equals("f")) {
             addFood();
+        } else if (command.equals("v")) {
+            viewFoodList();
         } else if (command.equals("r")) {
             caloriesReset();
         } else if (command.equals("b")) {
@@ -57,6 +64,8 @@ public class CalorieApp {
             calorieSurplus();
         } else if (command.equals("d")) {
             calorieDeficit();
+        } else if (command.equals("n")) {
+            changeName();
         } else {
             System.out.println("Please select a valid option...");
         }
@@ -76,15 +85,47 @@ public class CalorieApp {
         System.out.print("BMI:" + profile.getBMI() + "\n");
         System.out.print("TODAY'S CALORIE COUNT:" + profile.getCalorieCount() + "\n");
         System.out.print("TARGET CALORIES:" + profile.getCalories() + "\n");
-        System.out.println("\nToday's calorie count:");
+        System.out.println("\nDay's calorie count:");
         System.out.println("\te -> add exercise");
+        System.out.println("\tc -> view current exercise list");
         System.out.println("\tf -> add food");
+        System.out.println("\tv -> view current food list");
         System.out.println("\tr -> reset calorie count");
         System.out.println("Modify calorie target:");
-        System.out.println("\tb -> maintenance calories (resets any added/removed calories)");
+        System.out.println("\tb -> maintenance calories (reset any added/removed calories)");
         System.out.println("\ts -> calorie surplus (add calories)");
         System.out.println("\td -> calorie deficit (remove calories)");
-        System.out.println("\tq -> save/quit");
+        System.out.println("\n\tn -> change username");
+        System.out.println("\tq -> quit");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void addExercise() {
+        System.out.print("Enter exercise name:");
+        String amount = input.next();
+        System.out.print("Enter calories burned:");
+        double amount2 = input.nextDouble();
+        Exercise exercise1 = new Exercise(amount, amount2);
+
+        profile.newCalorieCount(profile.getCalorieCount() - amount2);
+        workoutList.add(exercise1);
+        System.out.println("\n");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void viewExerciseList() {
+        if (foodList.size() == 0) {
+            System.out.println("Exercise list is empty");
+        } else {
+            System.out.println("Current food list: \n");
+            for (Exercise exercise : workoutList) {
+                System.out.println(exercise.getExerciseName()
+                        + " @ " + exercise.getCaloriesBurned() + " calories burned");
+            }
+        }
+        System.out.println("\n");
     }
 
     // MODIFIES: this
@@ -96,16 +137,29 @@ public class CalorieApp {
         double amount2 = input.nextDouble();
         Food food1 = new Food(amount, amount2);
 
-        foodlist.add(food);
-
-        for (Food food : foodlist) {
-            int count = 0;
-            foodlist.get(count).getFoodName();
-        }
-
-
-
+        profile.newCalorieCount(amount2 + profile.getCalorieCount());
+        foodList.add(food1);
+        System.out.println("\n");
     }
+
+        // MODIFIES: this
+        // EFFECTS: conducts a deposit transaction
+    private void viewFoodList() {
+        if (foodList.size() == 0) {
+            System.out.println("Food list is empty");
+        } else {
+            System.out.println("Current food list: \n");
+            for (Food food : foodList) {
+                System.out.println(food.getFoodName() + " @ " + food.getFoodCalories() + " calories");
+            }
+        }
+        System.out.println("\n");
+    }
+
+
+
+
+
 
     // MODIFIES: this
     // EFFECTS: conducts a deposit transaction
@@ -116,32 +170,33 @@ public class CalorieApp {
         if (amount.equals("yes")) {
             profile.newCalorieCount(0);
         }
+        System.out.println("\n");
     }
 
     // MODIFIES: this
     // EFFECTS: conducts a deposit transaction
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void calculateCalories() {
-        System.out.print("Enter height(cm):");
+        System.out.print("Enter your height(cm):");
         double amount = input.nextDouble();
 
         if (amount <= 0) {
             System.out.println("Invalid height entered...\n");
         } else {
             profile.newHeight(amount);
-            System.out.print("Enter weight(kg):");
+            System.out.print("Enter your weight(kg):");
             double amount2 = input.nextDouble();
             if (amount2 <= 0) {
                 System.out.println("Invalid weight entered...\n");
             } else {
                 profile.newWeight(amount2);
-                System.out.print("Enter age:");
+                System.out.print("Enter your age:");
                 int amount3 = input.nextInt();
                 if (amount3 <= 0) {
                     System.out.println("Invalid age entered...\n");
                 } else {
                     profile.newAge(amount3);
-                    System.out.print("Enter sex (male/female):");
+                    System.out.print("Enter your sex (male/female):");
                     String amount4 = input.next();
                     if (amount4.equals("male")) {
                         profile.newSex("male");
@@ -161,6 +216,7 @@ public class CalorieApp {
                 }
             }
         }
+        System.out.println("\n");
     }
 
     // MODIFIES: this
@@ -174,6 +230,7 @@ public class CalorieApp {
         } else {
             System.out.println("Cannot add negative amount...\n");
         }
+        System.out.println("\n");
     }
 
     // MODIFIES: this
@@ -187,8 +244,18 @@ public class CalorieApp {
         } else {
             System.out.println("Cannot remove negative amount...\n");
         }
+        System.out.println("\n");
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void changeName() {
+        System.out.print("What would you like to be called?");
+        String amount = input.next();
+
+        profile.newName(amount);
+        System.out.println("\n");
+    }
 
 
 }
