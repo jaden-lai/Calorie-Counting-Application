@@ -1,31 +1,23 @@
 package model;
 
-// Represents an profile with username and BMI
+// Represents a profile with username, calories, and user info
 public class Profile {
-    private static int nextAccountId = 1;  // tracks id of next account created
-    private String name;                   // the account owner name
-    private double calories;                // the current balance of the account
-    private double height = 0;
-    private double weight = 0;
-    private double bmi = 0;
-    private int age = 0;
-    private String sex;
+    private String name;                    // Profile name
+    private double calories;                // the current target calories for a person
+    private double calorieCount;            // a days calorie count
+    private double height;                  // height of person
+    private double weight;                  // weight of person
+    private double bmi;                     // bmi of person
+    private int age;                        // age of person
+    private String sex;                     // sex of person
 
     /*
-     * REQUIRES: accountName has a non-zero length
-     * EFFECTS: name on account is set to accountName; account id is a
-     *          positive integer not assigned to any other account;
-     *          if initialBalance >= 0 then balance on account is set to
-     *          initialBalance, otherwise balance is zero.
+     * REQUIRES: username has a non-zero length
+     * EFFECTS: name on account is set to accountName;
      */
-    public Profile(String username, double initialCalories, double height, double weight, int age, double bmi,
+    public Profile(String username, double calories, double calorieCount, double height, double weight, int age, double bmi,
                    String sex) {
         name = username;
-        if (initialCalories >= 0) {
-            calories = initialCalories;
-        } else {
-            calories = 0;
-        }
     }
 
     public String getUsername() {
@@ -54,6 +46,10 @@ public class Profile {
 
     public String getSex() {
         return sex;
+    }
+
+    public double getCalorieCount() {
+        return calorieCount;
     }
 
     /*
@@ -131,6 +127,28 @@ public class Profile {
     public double newHeight(double amount) {
         height = amount;
         return height;
+    }
+
+    /*
+     * REQUIRES: amount >= 0 and amount <= getBalance()
+     * MODIFIES: this
+     * EFFECTS: amount is withdrawn from account and updated
+     * 		    balance is returned
+     */
+    public double newCalorieCount(double amount) {
+        calorieCount = amount;
+        return calorieCount;
+    }
+
+    /*
+     * REQUIRES: amount >= 0
+     * MODIFIES: this
+     * EFFECTS: amount is added to balance and updated
+     * 			balance is returned
+     */
+    public double newWeight(double amount) {
+        weight = amount;
+        return weight;
     }
 
 }

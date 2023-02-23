@@ -1,13 +1,18 @@
 package ui;
 
+import model.Food;
 import model.Profile;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Calorie tracking application
+// Partial structure found from Teller Application
 public class CalorieApp {
     private Profile profile;
     private Scanner input;
+    private ArrayList<Food> foodlist;
+    private Food food;
 
     // EFFECTS: runs the calorie application
     public CalorieApp() {
@@ -40,39 +45,78 @@ public class CalorieApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("b")) {
+        if (command.equals("e")) {
+            calorieSurplus();
+        } else if (command.equals("f")) {
+            addFood();
+        } else if (command.equals("r")) {
+            caloriesReset();
+        } else if (command.equals("b")) {
             calculateCalories();
         } else if (command.equals("s")) {
             calorieSurplus();
         } else if (command.equals("d")) {
             calorieDeficit();
         } else {
-            System.out.println("Selection not valid...");
+            System.out.println("Please select a valid option...");
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes accounts
+    // EFFECTS: initializes profile
     private void init() {
-        profile = new Profile("User", 0, 0, 0, 0, 0, "");
+        profile = new Profile("User", 0, 0,  0, 0, 0, 0, "");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
+        System.out.print("Hello " + profile.getUsername() + "," + "\n");
         System.out.print("BMI:" + profile.getBMI() + "\n");
+        System.out.print("TODAY'S CALORIE COUNT:" + profile.getCalorieCount() + "\n");
         System.out.print("TARGET CALORIES:" + profile.getCalories() + "\n");
-        System.out.println("\nSelect from:");
+        System.out.println("\nToday's calorie count:");
         System.out.println("\te -> add exercise");
         System.out.println("\tf -> add food");
-        System.out.println("\nModify calorie target:");
-        System.out.println("\tb -> maintenance calories based on BMI");
+        System.out.println("\tr -> reset calorie count");
+        System.out.println("Modify calorie target:");
+        System.out.println("\tb -> maintenance calories (resets any added/removed calories)");
         System.out.println("\ts -> calorie surplus (add calories)");
         System.out.println("\td -> calorie deficit (remove calories)");
         System.out.println("\tq -> save/quit");
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void addFood() {
+        System.out.print("Enter food name:");
+        String amount = input.next();
+        System.out.print("Enter calories:");
+        double amount2 = input.nextDouble();
+        Food food1 = new Food(amount, amount2);
+
+        foodlist.add(food);
+
+        for (Food food : foodlist) {
+            int count = 0;
+            foodlist.get(count).getFoodName();
+        }
+
+
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: conducts a deposit transaction
+    private void caloriesReset() {
+        System.out.print("Are you sure you want to reset your calories? (yes or any string to return)");
+        String amount = input.next();
+
+        if (amount.equals("yes")) {
+            profile.newCalorieCount(0);
+        }
+    }
 
     // MODIFIES: this
     // EFFECTS: conducts a deposit transaction
@@ -90,7 +134,7 @@ public class CalorieApp {
             if (amount2 <= 0) {
                 System.out.println("Invalid weight entered...\n");
             } else {
-                profile.newHeight(amount2);
+                profile.newWeight(amount2);
                 System.out.print("Enter age:");
                 int amount3 = input.nextInt();
                 if (amount3 <= 0) {
