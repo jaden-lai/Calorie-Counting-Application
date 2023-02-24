@@ -53,6 +53,12 @@ class ProfileTest {
     }
 
     @Test
+    void testNewCaloriesNegative() {
+        testProfile.newCalories(-200);
+        assertEquals(2000, testProfile.getCalories());
+    }
+
+    @Test
     void testNewCalorieCount() {
         testProfile.newCalorieCount(200);
         assertEquals(200, testProfile.getCalorieCount());
