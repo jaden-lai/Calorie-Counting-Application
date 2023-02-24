@@ -1,13 +1,13 @@
 package model;
 
-// Represents an exercise with a name and calories
+// Represents an exercise with name and calories
 public class Exercise {
     private String name;                    // Exercise name
     private double calories;                // Calories burned/removed
 
     /*
-     * REQUIRES: username has a non-zero length
-     * EFFECTS: name on account is set to accountName;
+     * REQUIRES: exercise name has a non-zero length
+     * EFFECTS: constructs exercise with given name and calories burned
      */
     public Exercise(String name, double calories) {
         this.name = name;

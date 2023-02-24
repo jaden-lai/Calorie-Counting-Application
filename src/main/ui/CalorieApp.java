@@ -41,7 +41,7 @@ public class CalorieApp {
             }
         }
 
-        System.out.println("\nStay counting!");
+        System.out.println("\nCounting so you don't have to!");
     }
 
     // MODIFIES: this
@@ -96,7 +96,7 @@ public class CalorieApp {
         System.out.println("\tf -> add food");
         System.out.println("\tx -> remove food");
         System.out.println("\tv -> view current food list");
-        System.out.println("\tr -> reset calorie count");
+        System.out.println("\tr -> reset calorie and day's lists");
         System.out.println("Modify calorie target:");
         System.out.println("\tb -> maintenance calories (reset any added/removed calories)");
         System.out.println("\ts -> calorie surplus (add calories)");
@@ -106,7 +106,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: adds exercise to workout list and removes burned calories from calorie count
     private void addExercise() {
         System.out.print("Enter exercise name:");
         String amount = input.next();
@@ -120,7 +120,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: removes an exercise from workout list and adds burned calories to calorie count
     private void removeExercise() {
         System.out.print("Enter exercise name to remove:");
         String amount = input.next();
@@ -137,10 +137,9 @@ public class CalorieApp {
         System.out.println("\n");
     }
 
-    // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: prints workout list with exercise names and calories burned
     private void viewExerciseList() {
-        if (foodList.size() == 0) {
+        if (workoutList.size() == 0) {
             System.out.println("Exercise list is empty");
         } else {
             System.out.println("Current food list: \n");
@@ -153,7 +152,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: adds food to food list and adds calories to calorie count
     private void addFood() {
         System.out.print("Enter food name:");
         String amount = input.next();
@@ -167,7 +166,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: removes food from food list and removes calories from calorie count
     private void removeFood() {
         System.out.print("Enter food name to remove:");
         String amount = input.next();
@@ -184,8 +183,7 @@ public class CalorieApp {
         System.out.println("\n");
     }
 
-        // MODIFIES: this
-        // EFFECTS: conducts a deposit transaction
+        // EFFECTS: prints food list with food names and calories
     private void viewFoodList() {
         if (foodList.size() == 0) {
             System.out.println("Food list is empty");
@@ -199,24 +197,22 @@ public class CalorieApp {
     }
 
 
-
-
-
-
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: sets calorie count to 0 and clears exercise and food list
     private void caloriesReset() {
         System.out.print("Are you sure you want to reset your calories? (yes or any string to return)");
         String amount = input.next();
 
         if (amount.equals("yes")) {
             profile.newCalorieCount(0);
+            foodList.clear();
+            workoutList.clear();
         }
         System.out.println("\n");
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: produces BMI and target calories based on user information
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void calculateCalories() {
         System.out.print("Enter your height(cm):");
@@ -262,7 +258,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: adds calories to targeted calorie amount
     private void calorieSurplus() {
         System.out.print("Enter target calories to add:");
         double amount = input.nextDouble();
@@ -276,7 +272,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: removes calories from targeted calorie amount
     private void calorieDeficit() {
         System.out.print("Enter target calories to remove:");
         double amount = input.nextDouble();
@@ -290,7 +286,7 @@ public class CalorieApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: changes name of user
     private void changeName() {
         System.out.print("What would you like to be called?");
         String amount = input.next();

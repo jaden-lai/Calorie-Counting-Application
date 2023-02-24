@@ -6,8 +6,8 @@ public class Food {
     private double calories;                // Calories given/added
 
     /*
-     * REQUIRES: username has a non-zero length
-     * EFFECTS: name on account is set to accountName;
+     * REQUIRES: food name has a non-zero length
+     * EFFECTS: constructs food with given name and calories gained
      */
     public Food(String name, double calories) {
         this.name = name;
