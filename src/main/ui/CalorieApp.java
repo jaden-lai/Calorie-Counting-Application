@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Calorie tracking application
-// Code partialy structured based from Teller Application
 public class CalorieApp {
     private Profile profile;
     private Scanner input;

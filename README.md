@@ -3,7 +3,7 @@
 ## What will the application do?
 
 This application will consist of multiple parts:
-- **Main UI** *screen*: Total recommended calorie goal displayed and ability to modify calories, food consumption, 
+- **Main UI** *screen*: Target calorie and calorie counter displayed with ability to modify calories, food consumption, 
 and fitness.
 
 This calorie counting application will allow users to calorie count through their daily activities from food consumption,
@@ -11,6 +11,7 @@ to fitness. A user's 'target' calorie goal will be calculated using the Harris-B
 user-inputed information about themselves such as height and body weight; they will be able to modify this target based on
 their goals.
 
+NOTE: The UI presented in this application draws many references from the 'Teller App' provided in CPSC 210.
 
 ## Who will use it?
 
