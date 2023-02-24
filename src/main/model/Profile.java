@@ -65,7 +65,9 @@ public class Profile {
      * EFFECTS: amount is added to calories
      */
     public double addCalories(double amount) {
-        calories = calories + amount;
+        if (amount >= 0) {
+            calories = calories + amount;
+        }
         return calories;
     }
 
@@ -75,7 +77,9 @@ public class Profile {
      * EFFECTS: amount is removed from calories
      */
     public double removeCalories(double amount) {
-        calories = calories - amount;
+        if (amount >= 0) {
+            calories = calories - amount;
+        }
         return calories;
     }
 
@@ -94,7 +98,9 @@ public class Profile {
      * EFFECTS: amount is new calories value
      */
     public double newCalories(double amount) {
-        calories = amount;
+        if (amount >= 0) {
+            calories = amount;
+        }
         return calories;
     }
 
@@ -113,7 +119,9 @@ public class Profile {
      * EFFECTS: amount is new height
      */
     public double newHeight(double amount) {
-        height = amount;
+        if (amount >= 0) {
+            height = amount;
+        }
         return height;
     }
 
@@ -123,7 +131,9 @@ public class Profile {
      * EFFECTS: amount is new weight
      */
     public double newWeight(double amount) {
-        weight = amount;
+        if (amount >= 0) {
+            weight = amount;
+        }
         return weight;
     }
 
@@ -133,7 +143,9 @@ public class Profile {
      * EFFECTS: amount is new age
      */
     public double newAge(int amount) {
-        age = amount;
+        if (amount >= 0) {
+            age = amount;
+        }
         return age;
     }
 
@@ -143,7 +155,9 @@ public class Profile {
      * EFFECTS: amount is new bmi
      */
     public double newBMI(double amount) {
-        bmi = amount;
+        if (amount >= 0) {
+            bmi = amount;
+        }
         return bmi;
     }
 
