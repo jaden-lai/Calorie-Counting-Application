@@ -72,7 +72,7 @@ public class Profile {
     }
 
     /*
-     * REQUIRES: amount >= 0
+     * REQUIRES: amount > 0
      * MODIFIES: this
      * EFFECTS: amount is removed from calories
      */
@@ -93,14 +93,11 @@ public class Profile {
     }
 
     /*
-     * REQUIRES: amount >= 0
      * MODIFIES: this
      * EFFECTS: amount is new calories value
      */
     public double newCalories(double amount) {
-        if (amount >= 0) {
-            calories = amount;
-        }
+        calories = amount;
         return calories;
     }
 
@@ -114,63 +111,59 @@ public class Profile {
     }
 
     /*
-     * REQUIRES: amount >= 0
+     * REQUIRES: amount > 0
      * MODIFIES: this
      * EFFECTS: amount is new height
      */
     public double newHeight(double amount) {
-        if (amount >= 0) {
+        if (amount > 0) {
             height = amount;
         }
         return height;
     }
 
     /*
-     * REQUIRES: amount >= 0
+     * REQUIRES: amount > 0
      * MODIFIES: this
      * EFFECTS: amount is new weight
      */
     public double newWeight(double amount) {
-        if (amount >= 0) {
+        if (amount > 0) {
             weight = amount;
         }
         return weight;
     }
 
     /*
-     * REQUIRES: amount >= 0
+     * REQUIRES: amount > 0
      * MODIFIES: this
      * EFFECTS: amount is new age
      */
     public double newAge(int amount) {
-        if (amount >= 0) {
+        if (amount > 0) {
             age = amount;
         }
         return age;
     }
 
     /*
-     * REQUIRES: amount >= 0
      * MODIFIES: this
      * EFFECTS: amount is new bmi
      */
     public double newBMI(double amount) {
-        if (amount >= 0) {
-            bmi = amount;
-        }
+        bmi = amount;
         return bmi;
     }
 
     /*
-     * REQUIRES: gender is male or female
+     * REQUIRES: male or female
      * MODIFIES: this
      * EFFECTS: gender is new sex
      */
     public String newSex(String gender) {
-        sex = gender;
+        if (gender.equals("male") || gender.equals("female")) {
+            sex = gender;
+        }
         return sex;
     }
-
-
-
 }
