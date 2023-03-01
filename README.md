@@ -34,4 +34,6 @@ I think it would be interesting to tackle this and create one of my own.
 - As a user, I want to be able to add/remove foods from my calorie counter
 - As a user, I want to be able to see my target calorie count
 - As a user, I want to be able to choose my calorie goal
+- As a user, I want to be able to save my profile if I choose
+- As a user, I want to be able to load a previous save when I start the application
 
