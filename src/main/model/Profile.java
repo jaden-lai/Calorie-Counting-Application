@@ -1,14 +1,19 @@
 package model;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a profile which includes user info (name, calories, calorie count, height, weight, bmi, age, and sex)
-public class Profile {
+public class Profile implements Writable {
     private String name;                    // Profile name
     private double targetCalories;          // the current target calories for a person
     private double calorieCount;            // a days calorie count
     private double height;                  // height of person
     private double weight;                  // weight of person
-    private double bmi;                     // bmi of person
     private int age;                        // age of person
+    private double bmi;                     // bmi of person
     private String sex;                     // sex of person
     private ExerciseList exerciseList;      // person's exercise list
     private FoodList foodList;              // person's food list
@@ -24,8 +29,8 @@ public class Profile {
         this.calorieCount = calorieCount;
         this.height = height;
         this.weight = weight;
-        this.bmi = bmi;
         this.age = age;
+        this.bmi = bmi;
         this.sex = sex;
         exerciseList = new ExerciseList();
         foodList = new FoodList();
@@ -47,12 +52,12 @@ public class Profile {
         return weight;
     }
 
-    public double getBMI() {
-        return bmi;
-    }
-
     public int getAge() {
         return age;
+    }
+
+    public double getBMI() {
+        return bmi;
     }
 
     public double getCalorieCount() {
@@ -155,5 +160,44 @@ public class Profile {
         calorieCount = exerciseList.getExerciseCalories() + foodList.getFoodCalories();
         return calorieCount;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("targetCalories", targetCalories);
+        json.put("calorieCount", calorieCount);
+        json.put("height", height);
+        json.put("weight", weight);
+        json.put("age", age);
+        json.put("bmi", bmi);
+        json.put("sex", sex);
+        json.put("exerciseList", exercisesToJson());
+        json.put("foodList", foodsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns exercises in this profile as a JSON array
+    private JSONArray exercisesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Exercise e : getExerciseList().getExerciseList()) {
+            jsonArray.put(e.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns foods in this profile as a JSON array
+    private JSONArray foodsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Food f : getFoodList().getFoodList()) {
+            jsonArray.put(f.toJson());
+        }
+
+        return jsonArray;
+    }
+
 
 }

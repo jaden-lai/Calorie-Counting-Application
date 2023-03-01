@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents food with a name and calories
-public class Food {
+public class Food implements Writable {
     private String name;                    // Food name
     private double calories;                // Calories given/added
 
@@ -21,4 +24,13 @@ public class Food {
     public double getFoodCalories() {
         return calories;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("calories", calories);
+        return json;
+    }
+
 }

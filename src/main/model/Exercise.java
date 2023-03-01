@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents an exercise with name and calories
-public class Exercise {
+public class Exercise implements Writable {
     private String name;                    // Exercise name
     private double calories;                // Calories burned/removed
 
@@ -19,5 +22,13 @@ public class Exercise {
 
     public double getCaloriesBurned() {
         return calories;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("calories", calories);
+        return json;
     }
 }

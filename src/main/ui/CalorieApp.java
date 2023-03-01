@@ -3,26 +3,39 @@ package ui;
 import model.Exercise;
 import model.Food;
 import model.Profile;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 // Calorie tracking application
 public class CalorieApp {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Profile profile;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the calorie application
-    public CalorieApp() {
+    public CalorieApp() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runCalorie();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runCalorie() {
+
         boolean keepGoing = true;
         String command = null;
 
+
         init();
+
 
         while (keepGoing) {
             displayMenu();
@@ -37,6 +50,29 @@ public class CalorieApp {
         }
 
         System.out.println("\nCounting so you don't have to!");
+    }
+
+    // EFFECTS: saves the profile to file
+    private void saveProfile() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(profile);
+            jsonWriter.close();
+            System.out.println("Saved profile to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads profile from file
+    private void loadProfile() {
+        try {
+            profile = jsonReader.read();
+            System.out.println("Loaded profile from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // MODIFIES: this
@@ -65,6 +101,10 @@ public class CalorieApp {
             calorieDeficit();
         } else if (command.equals("n")) {
             changeName();
+        } else if (command.equals("k")) {
+            saveProfile();
+        } else if (command.equals("l")) {
+            loadProfile();
         } else {
             System.out.println("Please select a valid option...");
         }
@@ -97,6 +137,8 @@ public class CalorieApp {
         System.out.println("\ts -> calorie surplus (add calories)");
         System.out.println("\td -> calorie deficit (remove calories)");
         System.out.println("\n\tn -> change username");
+        System.out.println("\n\tk -> SAVE/OVERRIDE PROFILE");
+        System.out.println("\n\tl -> LOAD PROFILE");
         System.out.println("\tq -> quit");
     }
 
