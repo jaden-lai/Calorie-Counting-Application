@@ -3,36 +3,40 @@ package model;
 // Represents a profile which includes user info (name, calories, calorie count, height, weight, bmi, age, and sex)
 public class Profile {
     private String name;                    // Profile name
-    private double calories;                // the current target calories for a person
+    private double targetCalories;                // the current target calories for a person
     private double calorieCount;            // a days calorie count
     private double height;                  // height of person
     private double weight;                  // weight of person
     private double bmi;                     // bmi of person
     private int age;                        // age of person
     private String sex;                     // sex of person
+    private ExerciseList exerciseList;      // person's exercise list
+    private FoodList foodList;              // person's food list
 
     /*
      * REQUIRES: name has a non-zero length
      * EFFECTS: constructs a profile with name, calories, calorie count, height, weight, bmi, age, and sex
      */
-    public Profile(String name, double calories, double calorieCount, double height, double weight, int age, double bmi,
-                   String sex) {
+    public Profile(String name, double targetCalories, double calorieCount, double height, double weight, int age,
+                   double bmi, String sex) {
         this.name = name;
-        this.calories = calories;
+        this.targetCalories = targetCalories;
         this.calorieCount = calorieCount;
         this.height = height;
         this.weight = weight;
         this.bmi = bmi;
         this.age = age;
         this.sex = sex;
+        exerciseList = new ExerciseList();
+        foodList = new FoodList();
     }
 
     public String getUsername() {
         return name;
     }
 
-    public double getCalories() {
-        return calories;
+    public double getTargetCalories() {
+        return targetCalories;
     }
 
     public double getHeight() {
@@ -59,6 +63,14 @@ public class Profile {
         return sex;
     }
 
+    public ExerciseList getExerciseList() {
+        return exerciseList;
+    }
+
+    public FoodList getFoodList() {
+        return foodList;
+    }
+
     /*
      * REQUIRES: amount >= 0
      * MODIFIES: this
@@ -66,9 +78,9 @@ public class Profile {
      */
     public double addCalories(double amount) {
         if (amount >= 0) {
-            calories = calories + amount;
+            targetCalories = targetCalories + amount;
         }
-        return calories;
+        return targetCalories;
     }
 
     /*
@@ -78,16 +90,16 @@ public class Profile {
      */
     public double removeCalories(double amount) {
         if (amount >= 0) {
-            calories = calories - amount;
+            targetCalories = targetCalories - amount;
         }
-        return calories;
+        return targetCalories;
     }
 
     /*
      * MODIFIES: this
      * EFFECTS: string is new name
      */
-    public String newName(String string) {
+    public String setName(String string) {
         name = string;
         return name;
     }
@@ -97,8 +109,8 @@ public class Profile {
      * EFFECTS: amount is new calories value
      */
     public double newCalories(double amount) {
-        calories = amount;
-        return calories;
+        targetCalories = amount;
+        return targetCalories;
     }
 
     /*
@@ -166,4 +178,36 @@ public class Profile {
         }
         return sex;
     }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: amount is new calorie count
+     */
+    public double burnCalories(double amount) {
+        calorieCount = calorieCount - amount;
+        return calorieCount;
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: amount is new calorie count
+     */
+    public double gainCalories(double amount) {
+        calorieCount = calorieCount + amount;
+        return calorieCount;
+    }
+
+
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: amount is new calorie count
+     */
+    public double calculateCalorieCount() {
+        calorieCount = exerciseList.getExerciseCalories() + foodList.getFoodCalories();
+        return calorieCount;
+    }
+
+
+
 }

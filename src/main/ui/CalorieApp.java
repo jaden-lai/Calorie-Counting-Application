@@ -11,8 +11,6 @@ import java.util.Scanner;
 public class CalorieApp {
     private Profile profile;
     private Scanner input;
-    private ArrayList<Food> foodList = new ArrayList<>();
-    private ArrayList<Exercise> workoutList = new ArrayList<>();
 
     // EFFECTS: runs the calorie application
     public CalorieApp() {
@@ -76,7 +74,7 @@ public class CalorieApp {
     // MODIFIES: this
     // EFFECTS: initializes profile
     private void init() {
-        profile = new Profile("User", 0, 0,  0, 0, 0, 0, "");
+        profile = new Profile("User", 0, 0, 0, 0, 0, 0, "");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -86,7 +84,7 @@ public class CalorieApp {
         System.out.print("Hello " + profile.getUsername() + "," + "\n");
         System.out.print("BMI:" + profile.getBMI() + "\n");
         System.out.print("TODAY'S CALORIE COUNT:" + profile.getCalorieCount() + "\n");
-        System.out.print("TARGET CALORIES:" + profile.getCalories() + "\n");
+        System.out.print("TARGET CALORIES:" + profile.getTargetCalories() + "\n");
         System.out.println("\nDay's calorie count:");
         System.out.println("\te -> add exercise");
         System.out.println("\tt -> remove exercise");
@@ -110,10 +108,9 @@ public class CalorieApp {
         String amount = input.next();
         System.out.print("Enter calories burned:");
         double amount2 = input.nextDouble();
-        Exercise exercise1 = new Exercise(amount, amount2);
+        profile.getExerciseList().addExercise(amount, amount2);
 
-        profile.newCalorieCount(profile.getCalorieCount() - amount2);
-        workoutList.add(exercise1);
+        profile.calculateCalorieCount();
         System.out.println("\n");
     }
 
@@ -123,25 +120,17 @@ public class CalorieApp {
         System.out.print("Enter exercise name to remove:");
         String amount = input.next();
 
-        for  (int i = 0; i < workoutList.size(); i++) {
-            Exercise e = workoutList.get(i);
-            if (amount.equals(e.getExerciseName())) {
-                profile.newCalorieCount(profile.getCalorieCount() + e.getCaloriesBurned());
-                System.out.println(e.getExerciseName() + " removed");
-                workoutList.remove(e);
-                i--;
-            }
-        }
-        System.out.println("\n");
+        profile.getExerciseList().removeExcercise(amount);
+        profile.calculateCalorieCount();
     }
 
     // EFFECTS: prints workout list with exercise names and calories burned
     private void viewExerciseList() {
-        if (workoutList.size() == 0) {
+        if (profile.getExerciseList().isEmpty()) {
             System.out.println("Exercise list is empty");
         } else {
-            System.out.println("Current food list: \n");
-            for (Exercise exercise : workoutList) {
+            System.out.println("Current exercise list: \n");
+            for (Exercise exercise : profile.getExerciseList().getExerciseList()) {
                 System.out.println(exercise.getExerciseName()
                         + " @ " + exercise.getCaloriesBurned() + " calories burned");
             }
@@ -156,10 +145,9 @@ public class CalorieApp {
         String amount = input.next();
         System.out.print("Enter calories:");
         double amount2 = input.nextDouble();
-        Food food1 = new Food(amount, amount2);
+        profile.getFoodList().addFood(amount, amount2);
 
-        profile.newCalorieCount(amount2 + profile.getCalorieCount());
-        foodList.add(food1);
+        profile.calculateCalorieCount();
         System.out.println("\n");
     }
 
@@ -169,25 +157,18 @@ public class CalorieApp {
         System.out.print("Enter food name to remove:");
         String amount = input.next();
 
-        for  (int i = 0; i < foodList.size(); i++) {
-            Food f = foodList.get(i);
-            if (amount.equals(f.getFoodName())) {
-                profile.newCalorieCount(profile.getCalorieCount() - f.getFoodCalories());
-                System.out.println(f.getFoodName() + " removed");
-                foodList.remove(f);
-                i--;
-            }
-        }
+        profile.getFoodList().removeFood(amount);
+        profile.calculateCalorieCount();
         System.out.println("\n");
     }
 
         // EFFECTS: prints food list with food names and calories
     private void viewFoodList() {
-        if (foodList.size() == 0) {
+        if (profile.getFoodList().isEmpty()) {
             System.out.println("Food list is empty");
         } else {
             System.out.println("Current food list: \n");
-            for (Food food : foodList) {
+            for (Food food : profile.getFoodList().getFoodList()) {
                 System.out.println(food.getFoodName() + " @ " + food.getFoodCalories() + " calories");
             }
         }
@@ -202,9 +183,10 @@ public class CalorieApp {
         String amount = input.next();
 
         if (amount.equals("yes")) {
-            profile.newCalorieCount(0);
-            foodList.clear();
-            workoutList.clear();
+            profile.getFoodList().reset();
+            profile.getExerciseList().reset();
+            profile.calculateCalorieCount();
+
         }
         System.out.println("\n");
     }
@@ -289,7 +271,7 @@ public class CalorieApp {
         System.out.print("What would you like to be called?");
         String amount = input.next();
 
-        profile.newName(amount);
+        profile.setName(amount);
         System.out.println("\n");
     }
 

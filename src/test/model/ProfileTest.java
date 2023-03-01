@@ -18,7 +18,7 @@ class ProfileTest {
     @Test
     void testProfileConstructor() {
         assertEquals("Bill", testProfile.getUsername());
-        assertEquals(2000, testProfile.getCalories());
+        assertEquals(2000, testProfile.getTargetCalories());
         assertEquals(875, testProfile.getCalorieCount());
         assertEquals(175, testProfile.getHeight());
         assertEquals(68, testProfile.getWeight());
@@ -30,37 +30,37 @@ class ProfileTest {
     @Test
     void testAddCalories() {
         testProfile.addCalories(200);
-        assertEquals(2200, testProfile.getCalories());
+        assertEquals(2200, testProfile.getTargetCalories());
     }
 
     @Test
     void testAddCaloriesNegative() {
         testProfile.addCalories(-200);
-        assertEquals(2000, testProfile.getCalories());
+        assertEquals(2000, testProfile.getTargetCalories());
     }
 
     @Test
     void testRemoveCalories() {
         testProfile.removeCalories(200);
-        assertEquals(1800, testProfile.getCalories());
+        assertEquals(1800, testProfile.getTargetCalories());
     }
 
     @Test
     void testRemoveCaloriesNegative() {
         testProfile.removeCalories(-200);
-        assertEquals(2000, testProfile.getCalories());
+        assertEquals(2000, testProfile.getTargetCalories());
     }
 
     @Test
     void testNewName() {
-        testProfile.newName("Jill");
+        testProfile.setName("Jill");
         assertEquals("Jill", testProfile.getUsername());
     }
 
     @Test
     void testNewCalories() {
         testProfile.newCalories(200);
-        assertEquals(200, testProfile.getCalories());
+        assertEquals(200, testProfile.getTargetCalories());
     }
 
     @Test
