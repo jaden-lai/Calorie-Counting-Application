@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 // Calorie tracking application
 public class CalorieApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/profile.json";
     private Profile profile;
     private Scanner input;
     private JsonWriter jsonWriter;
