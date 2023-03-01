@@ -59,77 +59,75 @@ class ProfileTest {
 
     @Test
     void testNewCalories() {
-        testProfile.newCalories(200);
+        testProfile.setCalories(200);
         assertEquals(200, testProfile.getTargetCalories());
     }
 
     @Test
     void testNewCalorieCount() {
-        testProfile.newCalorieCount(200);
+        testProfile.setCalorieCount(200);
         assertEquals(200, testProfile.getCalorieCount());
     }
 
     @Test
     void testNewHeight() {
-        testProfile.newHeight(180);
+        testProfile.setHeight(180);
         assertEquals(180, testProfile.getHeight());
     }
 
     @Test
     void testNewHeightInvalid() {
-        testProfile.newHeight(0);
+        testProfile.setHeight(0);
         assertEquals(175, testProfile.getHeight());
     }
 
     @Test
     void testNewWeight() {
-        testProfile.newWeight(120);
+        testProfile.setWeight(120);
         assertEquals(120, testProfile.getWeight());
     }
 
     @Test
     void testNewWeightInvalid() {
-        testProfile.newWeight(0);
+        testProfile.setWeight(0);
         assertEquals(68, testProfile.getWeight());
     }
 
     @Test
     void testNewAge() {
-        testProfile.newAge(43);
+        testProfile.setAge(43);
         assertEquals(43, testProfile.getAge());
     }
 
     @Test
     void testNewAgeInvalid() {
-        testProfile.newAge(0);
+        testProfile.setAge(0);
         assertEquals(20, testProfile.getAge());
     }
 
     @Test
     void testNewBMI() {
-        testProfile.newBMI(11);
+        testProfile.setBMI(11);
         assertEquals(11, testProfile.getBMI());
     }
 
     @Test
     void testNewSex() {
-        testProfile.newSex("female");
+        testProfile.setSex("female");
         assertEquals("female", testProfile.getSex());
     }
 
     @Test
     void testNewSexSame() {
-        testProfile.newSex("male");
+        testProfile.setSex("male");
         assertEquals("male", testProfile.getSex());
     }
 
     @Test
     void testNewSexInvalid() {
-        testProfile.newSex("fill");
+        testProfile.setSex("fill");
         assertEquals("male", testProfile.getSex());
     }
-
-
 
 
 }

@@ -6,7 +6,6 @@ public class Exercise {
     private double calories;                // Calories burned/removed
 
     /*
-     * REQUIRES: exercise name has a non-zero length
      * EFFECTS: constructs exercise with given name and calories burned
      */
     public Exercise(String name, double calories) {

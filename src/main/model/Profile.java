@@ -3,7 +3,7 @@ package model;
 // Represents a profile which includes user info (name, calories, calorie count, height, weight, bmi, age, and sex)
 public class Profile {
     private String name;                    // Profile name
-    private double targetCalories;                // the current target calories for a person
+    private double targetCalories;          // the current target calories for a person
     private double calorieCount;            // a days calorie count
     private double height;                  // height of person
     private double weight;                  // weight of person
@@ -14,8 +14,8 @@ public class Profile {
     private FoodList foodList;              // person's food list
 
     /*
-     * REQUIRES: name has a non-zero length
-     * EFFECTS: constructs a profile with name, calories, calorie count, height, weight, bmi, age, and sex
+     * EFFECTS: constructs a profile with name, calories, calorie count, height, weight, age, bmi, sex, excercise list,
+     *  and food list
      */
     public Profile(String name, double targetCalories, double calorieCount, double height, double weight, int age,
                    double bmi, String sex) {
@@ -84,7 +84,7 @@ public class Profile {
     }
 
     /*
-     * REQUIRES: amount > 0
+     * REQUIRES: amount >= 0
      * MODIFIES: this
      * EFFECTS: amount is removed from calories
      */
@@ -95,74 +95,42 @@ public class Profile {
         return targetCalories;
     }
 
-    /*
-     * MODIFIES: this
-     * EFFECTS: string is new name
-     */
     public String setName(String string) {
         name = string;
         return name;
     }
 
-    /*
-     * MODIFIES: this
-     * EFFECTS: amount is new calories value
-     */
-    public double newCalories(double amount) {
+
+    public double setCalories(double amount) {
         targetCalories = amount;
         return targetCalories;
     }
 
-    /*
-     * MODIFIES: this
-     * EFFECTS: amount is new calorie count
-     */
-    public double newCalorieCount(double amount) {
+
+    public double setCalorieCount(double amount) {
         calorieCount = amount;
         return calorieCount;
     }
 
-    /*
-     * REQUIRES: amount > 0
-     * MODIFIES: this
-     * EFFECTS: amount is new height
-     */
-    public double newHeight(double amount) {
-        if (amount > 0) {
-            height = amount;
-        }
+
+    public double setHeight(double amount) {
+        height = amount;
         return height;
     }
 
-    /*
-     * REQUIRES: amount > 0
-     * MODIFIES: this
-     * EFFECTS: amount is new weight
-     */
-    public double newWeight(double amount) {
-        if (amount > 0) {
-            weight = amount;
-        }
+
+    public double setWeight(double amount) {
+        weight = amount;
         return weight;
     }
 
-    /*
-     * REQUIRES: amount > 0
-     * MODIFIES: this
-     * EFFECTS: amount is new age
-     */
-    public double newAge(int amount) {
-        if (amount > 0) {
-            age = amount;
-        }
+
+    public double setAge(int amount) {
+        age = amount;
         return age;
     }
 
-    /*
-     * MODIFIES: this
-     * EFFECTS: amount is new bmi
-     */
-    public double newBMI(double amount) {
+    public double setBMI(double amount) {
         bmi = amount;
         return bmi;
     }
@@ -172,7 +140,7 @@ public class Profile {
      * MODIFIES: this
      * EFFECTS: gender is new sex
      */
-    public String newSex(String gender) {
+    public String setSex(String gender) {
         if (gender.equals("male") || gender.equals("female")) {
             sex = gender;
         }
@@ -183,31 +151,9 @@ public class Profile {
      * MODIFIES: this
      * EFFECTS: amount is new calorie count
      */
-    public double burnCalories(double amount) {
-        calorieCount = calorieCount - amount;
-        return calorieCount;
-    }
-
-    /*
-     * MODIFIES: this
-     * EFFECTS: amount is new calorie count
-     */
-    public double gainCalories(double amount) {
-        calorieCount = calorieCount + amount;
-        return calorieCount;
-    }
-
-
-
-    /*
-     * MODIFIES: this
-     * EFFECTS: amount is new calorie count
-     */
     public double calculateCalorieCount() {
         calorieCount = exerciseList.getExerciseCalories() + foodList.getFoodCalories();
         return calorieCount;
     }
-
-
 
 }

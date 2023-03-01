@@ -14,12 +14,16 @@ public class FoodList {
         foodList = new ArrayList<>();
     }
 
+    public ArrayList<Food> getFoodList() {
+        return foodList;
+    }
+
     public double getFoodCalories() {
         return foodCalories;
     }
 
     // MODIFIES: this
-    // EFFECTS: Adds Food to the end of the list
+    // EFFECTS: Adds Food to the end of the list and adds calories to foodCalories
     public void addFood(String name, double calories) {
         Food food1 = new Food(name, calories);
         foodList.add(food1);
@@ -39,18 +43,13 @@ public class FoodList {
         }
     }
 
+    // EFFECTS: True if foodList is empty
     public boolean isEmpty() {
         return foodList.size() == 0;
     }
 
-    public int getSize() {
-        return foodList.size();
-    }
-
-    public ArrayList<Food> getFoodList() {
-        return foodList;
-    }
-
+    // MODIFIES: this
+    // EFFECTS: Empties foodList and sets food calorie counter to 0
     public void reset() {
         foodList.clear();
         foodCalories = 0;

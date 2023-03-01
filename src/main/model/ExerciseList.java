@@ -14,13 +14,16 @@ public class ExerciseList {
         exerciseList = new ArrayList<>();
     }
 
+    public ArrayList<Exercise> getExerciseList() {
+        return exerciseList;
+    }
+
     public double getExerciseCalories() {
         return exerciseCalories;
     }
 
-    // REQUIRES: Exercise
     // MODIFIES: this
-    // EFFECTS: Adds Exercise to the end of the list
+    // EFFECTS: Adds Exercise to the end of the list and removes calories from exerciseCalories
     public void addExercise(String name, double calories) {
         Exercise exercise1 = new Exercise(name, calories);
         exerciseList.add(exercise1);
@@ -28,7 +31,7 @@ public class ExerciseList {
     }
 
     // MODIFIES: this
-    // EFFECTS: Remove Exercise and adds calories burned back to calorie count
+    // EFFECTS: Remove Exercise and adds calories previously removed calories back to calorie count
     public void removeExcercise(String exercise) {
         for (int i = 0; i < exerciseList.size(); i++) {
             Exercise e = exerciseList.get(i);
@@ -40,23 +43,17 @@ public class ExerciseList {
         }
     }
 
+    // EFFECTS: True if exerciseList is empty
     public boolean isEmpty() {
         return exerciseList.size() == 0;
     }
 
-    public int getSize() {
-        return exerciseList.size();
-    }
-
-    public ArrayList<Exercise> getExerciseList() {
-        return exerciseList;
-    }
-
+    // MODIFIES: this
+    // EFFECTS: Empties excerciseList and sets excercise calorie counter to 0
     public void reset() {
         exerciseList.clear();
         exerciseCalories = 0;
     }
-
 
 
 }
