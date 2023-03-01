@@ -52,6 +52,7 @@ public class JsonReader {
         String sex = jsonObject.getString("sex");
         Profile prfl = new Profile(name, targetCalories, calorieCount, height, weight, age, bmi, sex);
         addFoodList(prfl, jsonObject);
+        addExerciseList(prfl, jsonObject);
         return prfl;
     }
 
@@ -79,8 +80,8 @@ public class JsonReader {
     private void addExerciseList(Profile prfl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("exerciseList");
         for (Object json : jsonArray) {
-            JSONObject nextFood = (JSONObject) json;
-            addExercise(prfl, nextFood);
+            JSONObject nextExercise = (JSONObject) json;
+            addExercise(prfl, nextExercise);
         }
     }
 
@@ -90,6 +91,6 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         double calories = jsonObject.getDouble("calories");
         Exercise exercise = new Exercise(name, calories);
-        prfl.getFoodList().addFood(exercise.getExerciseName(), exercise.getCaloriesBurned());
+        prfl.getExerciseList().addExercise(exercise.getExerciseName(), exercise.getCaloriesBurned());
     }
 }
