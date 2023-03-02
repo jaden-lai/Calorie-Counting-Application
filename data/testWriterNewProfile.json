@@ -1,0 +1,12 @@
+{
+    "calorieCount": 0,
+    "exerciseList": [],
+    "foodList": [],
+    "sex": "",
+    "name": "User",
+    "weight": 0,
+    "age": 0,
+    "targetCalories": 0,
+    "height": 0,
+    "bmi": 0
+}

@@ -1,0 +1,34 @@
+{
+    "calorieCount": 875,
+    "exerciseList": [
+        {
+            "name": "running",
+            "calories": 73
+        },
+        {
+            "name": "pushups",
+            "calories": 28
+        }
+    ],
+    "foodList": [
+        {
+            "name": "apple",
+            "calories": 15
+        },
+        {
+            "name": "tomato",
+            "calories": 10
+        },
+        {
+            "name": "cracker",
+            "calories": 20
+        }
+    ],
+    "sex": "male",
+    "name": "Bill",
+    "weight": 68,
+    "age": 20,
+    "targetCalories": 2000,
+    "height": 175,
+    "bmi": 22.2
+}
