@@ -13,6 +13,8 @@ class ProfileTest {
     void runBefore() {
         testProfile = new Profile("Bill", 2000, 875, 175, 68, 20, 22.2,
                 "male");
+        testProfile.getFoodList().addFood("apple", 20);
+        testProfile.getExerciseList().addExercise("running", 17);
     }
 
     @Test
@@ -107,8 +109,14 @@ class ProfileTest {
 
     @Test
     void testSetSexInvalid() {
-        testProfile.setSex("fill");
+        testProfile.setSex("test");
         assertEquals("male", testProfile.getSex());
+    }
+
+    @Test
+    void testCalculateCalorieCount() {
+        testProfile.calculateCalorieCount();
+        assertEquals(3, testProfile.getCalorieCount());
     }
 
 
