@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,5 +19,11 @@ class FoodTest {
     void testFoodConstructor() {
         assertEquals("apple", testFood.getFoodName());
         assertEquals(52, testFood.getFoodCalories());
+    }
+
+    @Test
+    void testJSONObject() {
+        testFood.toJson();
+        assertEquals("apple", testFood.toJson().getString("name"));
     }
 }

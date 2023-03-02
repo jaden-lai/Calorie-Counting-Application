@@ -20,4 +20,9 @@ class ExerciseTest {
         assertEquals(100, testExercise.getCaloriesBurned());
     }
 
+    @Test
+    void testJSONObject() {
+        testExercise.toJson();
+        assertEquals("50 pushups", testExercise.toJson().getString("name"));
+    }
 }

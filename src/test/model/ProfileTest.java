@@ -119,5 +119,19 @@ class ProfileTest {
         assertEquals(3, testProfile.getCalorieCount());
     }
 
+    @Test
+    void testJSONObject() {
+        testProfile.toJson();
+        assertEquals("Bill", testProfile.toJson().get("name"));
+        assertEquals(2000, testProfile.toJson().getDouble("targetCalories"));
+        assertEquals(875, testProfile.toJson().getDouble("calorieCount"));
+        assertEquals(175, testProfile.toJson().getDouble("height"));
+        assertEquals(68, testProfile.toJson().getDouble("weight"));
+        assertEquals(20, testProfile.toJson().getDouble("age"));
+        assertEquals(22.2, testProfile.toJson().getDouble("bmi"));
+        assertEquals("male", testProfile.toJson().getString("sex"));
+
+    }
+
 
 }
