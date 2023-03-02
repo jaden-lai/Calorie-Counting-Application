@@ -32,7 +32,7 @@ public class ExerciseList {
 
     // MODIFIES: this
     // EFFECTS: Remove Exercise and adds calories previously removed calories back to calorie count
-    public void removeExcercise(String exercise) {
+    public void removeExercise(String exercise) {
         for (int i = 0; i < exerciseList.size(); i++) {
             Exercise e = exerciseList.get(i);
             if (exercise.equals(e.getExerciseName())) {
@@ -49,7 +49,7 @@ public class ExerciseList {
     }
 
     // MODIFIES: this
-    // EFFECTS: Empties excerciseList and sets excercise calorie counter to 0
+    // EFFECTS: Empties exerciseList and sets exercise calorie counter to 0
     public void reset() {
         exerciseList.clear();
         exerciseCalories = 0;

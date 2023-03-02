@@ -160,7 +160,7 @@ public class CalorieApp {
         System.out.print("Enter exercise name to remove:");
         String amount = input.next();
 
-        profile.getExerciseList().removeExcercise(amount);
+        profile.getExerciseList().removeExercise(amount);
         profile.calculateCalorieCount();
     }
 

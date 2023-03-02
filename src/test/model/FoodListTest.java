@@ -22,7 +22,7 @@ class FoodListTest {
     }
 
     @Test
-    void testRemoveExercise() {
+    void testRemoveExerciseTrue() {
         testFoodList.addFood("apple", 10);
         assertEquals(1, testFoodList.getFoodList().size());
         assertEquals("apple", testFoodList.getFoodList().get(0).getFoodName());
@@ -30,6 +30,17 @@ class FoodListTest {
         testFoodList.removeFood("apple");
         assertEquals(0, testFoodList.getFoodList().size());
         assertEquals(0, testFoodList.getFoodCalories());
+    }
+
+    @Test
+    void testRemoveExerciseFalse() {
+        testFoodList.addFood("apple", 10);
+        assertEquals(1, testFoodList.getFoodList().size());
+        assertEquals("apple", testFoodList.getFoodList().get(0).getFoodName());
+        assertEquals(10, testFoodList.getFoodCalories());
+        testFoodList.removeFood("test");
+        assertEquals(1, testFoodList.getFoodList().size());
+        assertEquals(10, testFoodList.getFoodCalories());
     }
 
     @Test

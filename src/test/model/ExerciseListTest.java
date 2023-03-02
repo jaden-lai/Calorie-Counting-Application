@@ -22,14 +22,25 @@ class ExerciseListTest {
     }
 
     @Test
-    void testRemoveExercise() {
+    void testRemoveExerciseTrue() {
         testExerciseList.addExercise("running", 20);
         assertEquals(1, testExerciseList.getExerciseList().size());
         assertEquals("running", testExerciseList.getExerciseList().get(0).getExerciseName());
         assertEquals(-20, testExerciseList.getExerciseCalories());
-        testExerciseList.removeExcercise("running");
+        testExerciseList.removeExercise("running");
         assertEquals(0, testExerciseList.getExerciseList().size());
         assertEquals(0, testExerciseList.getExerciseCalories());
+    }
+
+    @Test
+    void testRemoveExerciseFalse() {
+        testExerciseList.addExercise("running", 20);
+        assertEquals(1, testExerciseList.getExerciseList().size());
+        assertEquals("running", testExerciseList.getExerciseList().get(0).getExerciseName());
+        assertEquals(-20, testExerciseList.getExerciseCalories());
+        testExerciseList.removeExercise("test");
+        assertEquals(1, testExerciseList.getExerciseList().size());
+        assertEquals(-20, testExerciseList.getExerciseCalories());
     }
 
     @Test

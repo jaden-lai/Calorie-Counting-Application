@@ -154,7 +154,7 @@ public class Profile implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: amount is new calorie count
+     * EFFECTS: updates calorieCount to be sum of total exercise calories and food calories
      */
     public double calculateCalorieCount() {
         calorieCount = exerciseList.getExerciseCalories() + foodList.getFoodCalories();
