@@ -19,4 +19,5 @@ class ExerciseTest {
         assertEquals("50 pushups", testExercise.getExerciseName());
         assertEquals(100, testExercise.getCaloriesBurned());
     }
+
 }
