@@ -12,7 +12,7 @@ consumption, to fitness. A user's 'target' calorie goal will be calculated using
 user-inputted information about themselves such as height and body weight; they will be able to modify this target based
 on their goals.
 
-NOTE: The UI presented in this application references the 'Teller App' and 'JsonSerializationDemo' closely provided in
+NOTE: The UI presented in this application references the 'Teller App', 'JsonSerializationDemo', and 'Phase 3 EdX GUI' closely provided in
 CPSC 210.
 
 ## Who will use it?

@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// Calorie tracking application
 public class CalorieAppUI extends JFrame {
     private static final String JSON_STORE = "./data/profile.json";
     private Profile profile;
@@ -24,8 +25,8 @@ public class CalorieAppUI extends JFrame {
     private static final int WIDTH = 720;
     private static final int HEIGHT = 1280;
 
-
-    // P3 EdX Reference
+    // MODIFIES: this
+    // EFFECTS: runs the calorie counting application
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public CalorieAppUI() throws FileNotFoundException {
         frame = new JFrame();
@@ -49,7 +50,7 @@ public class CalorieAppUI extends JFrame {
 
         label.setHorizontalTextPosition(JLabel.CENTER);
         label.setVerticalTextPosition(JLabel.TOP);
-        label.setFont(new Font("Segoe UI",Font.PLAIN,15));
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         label.setIconTextGap(1);
         label.setOpaque(true);
         label.setVerticalAlignment(JLabel.CENTER);
@@ -65,20 +66,20 @@ public class CalorieAppUI extends JFrame {
         JButton resetCalories = new JButton("Reset today's calorie count");
         JButton viewFoods = new JButton("View List of Foods");
         JButton viewExercises = new JButton("View List of Exercises");
-        JButton saveProfile = new JButton("Save/Load Profile");
+        JButton saveLoadProfile = new JButton("Save/Load Profile");
         JButton exit = new JButton("Exit");
 
-        maintenanceCalories.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        modifyCalories.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        addFood.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        removeFood.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        addExercise.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        removeExercise.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        resetCalories.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        viewFoods.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        viewExercises.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        saveProfile.setFont((new Font("Segoe UI",Font.PLAIN,15)));
-        exit.setFont((new Font("Segoe UI",Font.PLAIN,15)));
+        maintenanceCalories.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        modifyCalories.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        addFood.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        removeFood.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        addExercise.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        removeExercise.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        resetCalories.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        viewFoods.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        viewExercises.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        saveLoadProfile.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
+        exit.setFont((new Font("Segoe UI", Font.PLAIN, 15)));
 
         c.add(maintenanceCalories);
         c.add(label);
@@ -90,7 +91,7 @@ public class CalorieAppUI extends JFrame {
         c.add(removeExercise);
         c.add(viewExercises);
         c.add(resetCalories);
-        c.add(saveProfile);
+        c.add(saveLoadProfile);
         c.add(exit);
 
         validate();
@@ -103,6 +104,8 @@ public class CalorieAppUI extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ((JPanel) frame.getContentPane()).setBorder((new EmptyBorder(12, 12, 12, 12)));
 
+        // MODIFIES: this
+        // EFFECTS: produces BMI and target calories based on user information
         maintenanceCalories.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -150,6 +153,8 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // MODIFIES: this
+        // EFFECTS: adds exercise to workout list and removes burned calories from calorie count
         addExercise.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,6 +174,8 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // MODIFIES: this
+        // EFFECTS: removes an exercise from workout list and adds burned calories to calorie count
         removeExercise.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -185,6 +192,7 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // EFFECTS: prints workout list with exercise names and calories burned
         viewExercises.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -200,6 +208,8 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // MODIFIES: this
+        // EFFECTS: adds food to food list and adds calories to calorie count
         addFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -219,6 +229,8 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // MODIFIES: this
+        // EFFECTS: removes food from food list and removes calories from calorie count
         removeFood.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -235,6 +247,7 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // EFFECTS: prints food list with food names and calories
         viewFoods.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -243,13 +256,15 @@ public class CalorieAppUI extends JFrame {
                 } else {
                     JOptionPane.showMessageDialog(frame, "The following have been added to the list:");
                     for (Food food : profile.getFoodList().getFoodList()) {
-                        JOptionPane.showMessageDialog(frame, food.getFoodName() + " gave "
+                        JOptionPane.showMessageDialog(frame, food.getFoodName() + " had "
                                 + food.getFoodCalories() + " calories");
                     }
                 }
             }
         });
 
+        // MODIFIES: this
+        // EFFECTS: sets calorie count to 0 and clears exercise and food list
         resetCalories.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -271,6 +286,8 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
+        // MODIFIES: this
+        // EFFECTS: adds or removes calories from targeted calorie amount
         modifyCalories.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -300,7 +317,9 @@ public class CalorieAppUI extends JFrame {
             }
         });
 
-        saveProfile.addActionListener(new ActionListener() {
+        // MODIFIES: this
+        // EFFECTS: saves or loads profile from file
+        saveLoadProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String input = JOptionPane.showInputDialog("Would you like to save, load, or go back?");
@@ -312,15 +331,15 @@ public class CalorieAppUI extends JFrame {
                         jsonWriter.close();
                         JOptionPane.showMessageDialog(frame, "Saved profile to " + JSON_STORE);
                     } catch (FileNotFoundException ex) {
-                        JOptionPane.showMessageDialog(frame,"Unable to write to file: " + JSON_STORE);
+                        JOptionPane.showMessageDialog(frame, "Unable to write to file: " + JSON_STORE);
                     }
                 } else {
                     if (input.equals("load")) {
                         try {
                             profile = jsonReader.read();
-                            JOptionPane.showMessageDialog(frame,"Loaded profile from " + JSON_STORE);
+                            JOptionPane.showMessageDialog(frame, "Loaded profile from " + JSON_STORE);
                         } catch (IOException ex) {
-                            JOptionPane.showMessageDialog(frame,"Unable to read from file: " + JSON_STORE);
+                            JOptionPane.showMessageDialog(frame, "Unable to read from file: " + JSON_STORE);
                         }
                     }
                 }
