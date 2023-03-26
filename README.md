@@ -36,3 +36,11 @@ today. However, I think it would be interesting to tackle this as my first proje
 - As a user, I want to be able to save my profile if I choose
 - As a user, I want to be able to load a previous save when I start the application
 
+## Instructions for Grader
+
+- You can generate the first required action related to adding Xs to a Y by clicking corresponding 'add' or 'remove' food and exercise buttons
+- You can generate the second required action related to adding Xs to a Y by clicking view food or exercise lists
+- You can locate my visual component by starting the application on the main menu
+- You can save the state of my application by clicking the "Save/Load Profile" button and typing "save"
+- You can reload the state of my application by "Save/Load Profile" button and typing "load"
+
