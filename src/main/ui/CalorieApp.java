@@ -135,9 +135,10 @@ public class CalorieApp {
         System.out.println("\tb -> maintenance calories (reset any added/removed calories)");
         System.out.println("\ts -> calorie surplus (add calories)");
         System.out.println("\td -> calorie deficit (remove calories)");
-        System.out.println("\n\tn -> change username");
-        System.out.println("\n\tk -> SAVE/OVERRIDE PROFILE");
-        System.out.println("\n\tl -> LOAD PROFILE");
+        System.out.println("miscellaneous:");
+        System.out.println("\tn -> change username");
+        System.out.println("\tk -> SAVE/OVERRIDE PROFILE");
+        System.out.println("\tl -> LOAD PROFILE");
         System.out.println("\tq -> quit");
     }
 
@@ -219,7 +220,7 @@ public class CalorieApp {
     // MODIFIES: this
     // EFFECTS: sets calorie count to 0 and clears exercise and food list
     private void caloriesReset() {
-        System.out.print("Are you sure you want to reset your calories? (yes or any string to return)");
+        System.out.print("Are you sure you want to reset your calories? (yes or no)");
         String amount = input.next();
 
         if (amount.equals("yes")) {
