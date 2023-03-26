@@ -38,9 +38,24 @@ today. However, I think it would be interesting to tackle this as my first proje
 
 ## Instructions for Grader
 
-- You can generate the first required action related to adding Xs to a Y by clicking corresponding 'add' or 'remove' food and exercise buttons
-- You can generate the second required action related to adding Xs to a Y by clicking view food or exercise lists
+- You can generate the first required action related to adding Xs to a Y by clicking corresponding 'add' food/exercise buttons and typing the name and calories of food/exercise
+- You can generate the second required action related to adding Xs to a Y by clicking 'remove' food/exercise buttons and typing name of food/exercise to remove OR reset button to clear both
 - You can locate my visual component by starting the application on the main menu
 - You can save the state of my application by clicking the "Save/Load Profile" button and typing "save"
 - You can reload the state of my application by "Save/Load Profile" button and typing "load"
+
+## Phase 4: Task 2
+
+- banana with 10.0 calories has been added to food list
+- calorie count updated
+- running burning 34.0 calories has been added to the list
+- calorie count updated
+- avocado with 12.0 calories has been added to food list
+- calorie count updated
+- banana with 10.0 calories has been removed from food list
+- calorie count updated
+- food list has been cleared (calories gained set to 0)
+- exercise list has been cleared (calories burned set to 0)
+- calorie count updated
+- calorie count updated
 

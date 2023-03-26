@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import model.Exercise;
 import model.Food;
 import model.Profile;
@@ -18,6 +20,8 @@ import java.io.IOException;
 public class CalorieAppUI extends JFrame {
     private static final String JSON_STORE = "./data/profile.json";
     private Profile profile;
+    private Event event;
+    private EventLog eventLog;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JFrame frame;
@@ -275,11 +279,12 @@ public class CalorieAppUI extends JFrame {
                     profile.getFoodList().reset();
                     profile.getExerciseList().reset();
                     profile.calculateCalorieCount();
-                    JOptionPane.showMessageDialog(frame, "Target calories have been modified by " + input);
+                    JOptionPane.showMessageDialog(frame, "Target calories have been reset");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Target calories have been left unchanged");
                 }
                 profile.calculateCalorieCount();
 
-                JOptionPane.showMessageDialog(frame, "Target calories have been left unchanged");
                 label.setText("<html>Welcome " + profile.getUsername() + "," + "<br> TODAY'S CALORIE COUNT: "
                         + profile.getCalorieCount() + "<br>TARGET CALORIES: " + profile.getTargetCalories()
                         + "</html>");
@@ -313,6 +318,10 @@ public class CalorieAppUI extends JFrame {
 
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                eventLog = EventLog.getInstance();
+                for (Event event : eventLog) {
+                    System.out.println(event.getDescription());
+                }
                 System.exit(0);
             }
         });

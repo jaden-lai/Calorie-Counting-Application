@@ -84,6 +84,7 @@ public class Profile implements Writable {
     public double addCalories(double amount) {
         if (amount >= 0) {
             targetCalories = targetCalories + amount;
+            EventLog.getInstance().logEvent(new Event(amount + "added to target calories"));
         }
         return targetCalories;
     }
@@ -96,6 +97,7 @@ public class Profile implements Writable {
     public double removeCalories(double amount) {
         if (amount >= 0) {
             targetCalories = targetCalories - amount;
+            EventLog.getInstance().logEvent(new Event(amount + "removed from target calories"));
         }
         return targetCalories;
     }
@@ -108,6 +110,7 @@ public class Profile implements Writable {
 
     public double setCalories(double amount) {
         targetCalories = amount;
+        EventLog.getInstance().logEvent(new Event("set target calories to " + amount));
         return targetCalories;
     }
 
@@ -158,6 +161,7 @@ public class Profile implements Writable {
      */
     public double calculateCalorieCount() {
         calorieCount = exerciseList.getExerciseCalories() + foodList.getFoodCalories();
+        EventLog.getInstance().logEvent(new Event("calorie count updated"));
         return calorieCount;
     }
 

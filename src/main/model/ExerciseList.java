@@ -28,6 +28,8 @@ public class ExerciseList {
         Exercise exercise1 = new Exercise(name, calories);
         exerciseList.add(exercise1);
         exerciseCalories -= calories;
+        EventLog.getInstance().logEvent(new Event(name + " burning "
+                + Double.toString(calories) + " calories has been added to the list"));
     }
 
     // MODIFIES: this
@@ -39,6 +41,8 @@ public class ExerciseList {
                 exerciseCalories += e.getCaloriesBurned();
                 exerciseList.remove(e);
                 i--;
+                EventLog.getInstance().logEvent(new Event(exercise + " burning "
+                        + e.getCaloriesBurned() + " calores has been removed from exercise list"));
             }
         }
     }
@@ -53,6 +57,8 @@ public class ExerciseList {
     public void reset() {
         exerciseList.clear();
         exerciseCalories = 0;
+        EventLog.getInstance().logEvent(new Event("exercise list has"
+                + " been cleared (calories burned set to 0)"));
     }
 
 

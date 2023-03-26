@@ -28,6 +28,8 @@ public class FoodList {
         Food food1 = new Food(name, calories);
         foodList.add(food1);
         foodCalories += calories;
+        EventLog.getInstance().logEvent(new Event(name + " with "
+                + calories + " calories has been added to food list"));
     }
 
     // MODIFIES: this
@@ -39,6 +41,8 @@ public class FoodList {
                 foodCalories -= f.getFoodCalories();
                 foodList.remove(f);
                 i--;
+                EventLog.getInstance().logEvent(new Event(food + " with "
+                        + f.getFoodCalories() + " calories has been removed from food list"));
             }
         }
     }
@@ -53,6 +57,8 @@ public class FoodList {
     public void reset() {
         foodList.clear();
         foodCalories = 0;
+        EventLog.getInstance().logEvent(new Event("food list has"
+                + " been cleared (calories gained set to 0)"));
     }
 
 }

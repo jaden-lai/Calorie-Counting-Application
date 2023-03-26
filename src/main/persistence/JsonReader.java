@@ -1,8 +1,6 @@
 package persistence;
 
-import model.Exercise;
-import model.Food;
-import model.Profile;
+import model.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,6 +24,7 @@ public class JsonReader {
     public Profile read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("profile save file loaded from stored location"));
         return parseProfile(jsonObject);
     }
 
