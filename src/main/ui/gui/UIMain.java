@@ -1,9 +1,15 @@
 package ui.gui;
 
+import ui.CalorieApp;
+
 import java.io.FileNotFoundException;
 
 public class UIMain {
     public static void main(String[] args) throws FileNotFoundException {
-        new CalorieAppUI();
+        try {
+            new CalorieAppUI();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to run application: file not found");
+        }
     }
 }
