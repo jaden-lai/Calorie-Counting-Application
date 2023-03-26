@@ -43,18 +43,17 @@ public class CalorieAppUI extends JFrame {
         label.setHorizontalAlignment(SwingConstants.CENTER);
         ImageIcon originalIcon = new ImageIcon("data/chad.jpg");
         Image originalImage = originalIcon.getImage();
-        Image scaledImage = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image scaledImage = originalImage.getScaledInstance(115, 115, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         label.setIcon(scaledIcon);
 
-        label.setHorizontalTextPosition(JLabel.CENTER); //set text LEFT,CENTER, RIGHT of imageicon
-        label.setVerticalTextPosition(JLabel.TOP); //set text TOP,CENTER, BOTTOM of imageicon
-        label.setFont(new Font("Segoe UI",Font.PLAIN,15)); //set font of text
-        label.setIconTextGap(1); //set gap of text to image
-        label.setOpaque(true); //display background color
-        label.setVerticalAlignment(JLabel.CENTER); //set vertical position of icon+text within label
-        label.setHorizontalAlignment(JLabel.CENTER); //set horizontal position of icon+text within label
-        //label.setBounds(100, 100, 250, 250); //set x,y position within frame as well as dimensions
+        label.setHorizontalTextPosition(JLabel.CENTER);
+        label.setVerticalTextPosition(JLabel.TOP);
+        label.setFont(new Font("Segoe UI",Font.PLAIN,15));
+        label.setIconTextGap(1);
+        label.setOpaque(true);
+        label.setVerticalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.CENTER);
 
 
         JButton maintenanceCalories = new JButton("Find Calorie Target");
