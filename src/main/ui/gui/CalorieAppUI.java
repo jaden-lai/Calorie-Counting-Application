@@ -48,7 +48,7 @@ public class CalorieAppUI extends JFrame {
         label.setHorizontalAlignment(SwingConstants.CENTER);
         ImageIcon originalIcon = new ImageIcon("data/chad.jpg");
         Image originalImage = originalIcon.getImage();
-        Image scaledImage = originalImage.getScaledInstance(115, 115, Image.SCALE_SMOOTH);
+        Image scaledImage = originalImage.getScaledInstance(140, 140, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         label.setIcon(scaledIcon);
 
@@ -121,7 +121,7 @@ public class CalorieAppUI extends JFrame {
                 } else {
                     profile.setHeight(height);
                     input = JOptionPane.showInputDialog("Enter your weight(kg):");
-                    double weight = Integer.parseInt(input);
+                    double weight = Double.parseDouble(input);
                     if (weight <= 0) {
                         JOptionPane.showMessageDialog(frame, "Invalid weight entered...");
                     } else {
@@ -357,6 +357,5 @@ public class CalorieAppUI extends JFrame {
                         + "</html>");
             }
         });
-
     }
 }
