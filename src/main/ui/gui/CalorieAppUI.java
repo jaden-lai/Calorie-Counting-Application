@@ -20,7 +20,6 @@ import java.io.IOException;
 public class CalorieAppUI extends JFrame {
     private static final String JSON_STORE = "./data/profile.json";
     private Profile profile;
-    private Event event;
     private EventLog eventLog;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -321,6 +320,7 @@ public class CalorieAppUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 eventLog = EventLog.getInstance();
                 for (Event event : eventLog) {
+                    System.out.println(event.getDate());
                     System.out.println(event.getDescription());
                 }
                 System.exit(0);
