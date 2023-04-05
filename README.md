@@ -68,7 +68,10 @@ today. However, I think it would be interesting to tackle this as my first proje
 
 ## Phase 4: Task 3
 
-Many changes could be made to improve the design of my calorie app project. The code in the ExerciseList class and FoodList class are exact replications of one another, the only difference being
-that one stores foods, and one stores exercise objects. The methods are exactly identical otherwise. I could improve the
-design by creating an abstract class to reduce the significant amount of redundant code in each class by extending ExerciseList
-and FoodList to this class.
+Many changes could be made to improve the design of my calorie app project. One area that could benefit from refactoring
+are the ExerciseList and FoodList classes, which currently contain exact copies of each other's code. The only
+difference between the two classes is that one stores Food objects and the other stores Exercise objects. To reduce the
+amount of redundant code in each class, I would create an abstract class and have ExerciseList and FoodList extend this class.
+By doing so, I could eliminate duplicate code that would be manageable and maintainable in the long run.
+This refactoring would also help with scalability, making it easier to add additional types of lists in the future. If I
+had more time, this would be one of the first step I would take.
