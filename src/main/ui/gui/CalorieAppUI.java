@@ -48,7 +48,7 @@ public class CalorieAppUI extends JFrame {
         label.setHorizontalAlignment(SwingConstants.CENTER);
         ImageIcon originalIcon = new ImageIcon("data/chad.jpg");
         Image originalImage = originalIcon.getImage();
-        Image scaledImage = originalImage.getScaledInstance(140, 140, Image.SCALE_SMOOTH);
+        Image scaledImage = originalImage.getScaledInstance(130, 130, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         label.setIcon(scaledIcon);
 
@@ -107,6 +107,7 @@ public class CalorieAppUI extends JFrame {
         frame.setTitle("Calorie Counting App");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ((JPanel) frame.getContentPane()).setBorder((new EmptyBorder(12, 12, 12, 12)));
+
 
         // MODIFIES: this
         // EFFECTS: produces BMI and target calories based on user information
