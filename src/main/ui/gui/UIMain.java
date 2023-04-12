@@ -1,7 +1,5 @@
 package ui.gui;
 
-import ui.CalorieApp;
-
 import java.io.FileNotFoundException;
 
 public class UIMain {
